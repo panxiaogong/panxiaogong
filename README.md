@@ -7,9 +7,10 @@ Welcome to my GitHub profile!
 - 🐧 I'm deeply interested in Linux, from system internals to shell scripting.
 - 💻 I'm fascinated by all things related to computer technology—algorithms, operating systems, networks, and more.
 ## :computer: Website
-
+![panxiaogong.me]
 ## 📊 GitHub Stats
 ![panxiaogong's GitHub stats](https://github-readme-stats.vercel.app/api?username=panxiaogong&show_icons=true&theme=radical)
+
 ## 🔍 Interests
 
 - 🧮 Mathematics (Linear Algebra, Calculus, Probability)
