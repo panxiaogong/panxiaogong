@@ -28,21 +28,22 @@
 | A08 | **密码学概论** | 
 | T01 | **LaTeX 小小说明书** | 
 
-##  主要仓库
+## 📂 主要仓库
 
 &emsp;&emsp;现阶段的仓库主要和我的数学或者密码学文档相关联，由于我个人习惯是将不同的数学课程整理在同一个仓库中，所以数量比较少：
 
-
-
+-  [**panxiaogong**](https://github.com/panxiaogong/panxiaogong) — 个人 GitHub 主页配置
+-  [**SDU0046MATH**](https://github.com/panxiaogong/SDU0046MATH) — 数学与密码学课程笔记（LaTeX 源码及 PDF）
+-  [**MemGuard**](https://github.com/panxiaogong/MemGuard) — 大模型Memory安全相关项目
+-  [**AgentArmor**](https://github.com/panxiaogong/AgentArmor) — AI Agent 安全防护
 
 
 
 ## 🔍 兴趣领域
 
-- 🔐 **密码学** — 公钥密码体制、后量子密码、安全协议
-- 🧮 **数学** — 线性代数、概率论、数论与近世代数
-- 💻 **计算机科学** — 数据结构、算法设计、操作系统
-- 🐧 **Linux** — 系统内核、Shell 脚本、开源生态
+- **密码学** — 公钥密码、对称密码、安全协议
+- **数学** — 线性代数、概率论、数论与近世代数
+- **计算机科学** — 操作系统、数据结构、算法设计
 
 
 ## :computer: 个人网站
