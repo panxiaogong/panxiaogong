@@ -1,0 +1,3 @@
+texput.log
+*.pyc
+__pycache__/

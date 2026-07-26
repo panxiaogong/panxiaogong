@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 id="article-title">{{ document.title }}</h1>
+
+<div class="article-meta">
+  <span>{{ document.author }}</span>
+  {% if document.date_display %}
+  <span>{{ document.date_display }}</span>
+  {% endif %}
+  {% if document.tags %}
+  <span>{{ document.tags | join(' · ') }}</span>
+  {% endif %}
+</div>
+
+<div id="article-content">
+  {{ document.html | safe }}
+</div>
+
+{% if document.kind == 'post' and (document.previous_post or document.next_post) %}
+<div class="post-guide">
+  <div class="item">
+    {% if document.previous_post %}
+    <a href="{{ document.previous_post.url }}"><i class="fa fa-angle-left" aria-hidden="true"></i>{{ document.previous_post.title }}</a>
+    {% endif %}
+  </div>
+  <div class="item right">
+    {% if document.next_post %}
+    <a href="{{ document.next_post.url }}">{{ document.next_post.title }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

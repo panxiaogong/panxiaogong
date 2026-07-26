@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>关于本站 | 网安数学站</title>
+  <meta name="description" content="一个专注学院内数学课程学习、记录与分享的空间，各门课程的笔记与阶段总结会被整理成清晰的章节，方便回顾与持续更新。" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=2" />
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script>
+    var searchEngine = "https://www.google.com/search?q=";
+    var homeHost = window.location.host;
+    window.MathJax = {
+      tex: {
+        packages: {'[+]': ['ams']},
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      startup: {
+        typeset: false
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+    window.__typesetMath = function () {
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') return;
+      var container = document.getElementById('content') || document.body;
+      window.MathJax.typesetPromise([container]).catch(function (err) {
+        console.error('MathJax typeset failed:', err);
+      });
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+      window.__typesetMath();
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="window.__typesetMath()"></script>
+  <script>
+    window.__sidebarUrl = "/sidebar.html";
+  </script>
+  <script defer src="/assets/js/site.js?v=2"></script>
+</head>
+<body class="sidebar-open">
+  <header id="header">
+    <div class="header-left">
+      <a id="title" href="/" class="logo">
+        <i class="fa fa-book" aria-hidden="true"></i>
+        <span>网安数学站</span>
+      </a>
+    </div>
+
+    <ul id="menu">
+      <li class="menu-item sidebar-mobile-toggle">
+        <button id="sidebar-toggle-mobile" class="icon-btn" aria-label="Toggle Sidebar">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <div id="app-shell">
+    <aside id="sidebar">
+      <div class="sidebar-head">
+        <button id="sidebar-close" class="icon-btn" aria-label="Close Sidebar">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-search-wrap">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+      </div>
+
+      <div class="sidebar-tree-wrap">
+        <nav id="tree"></nav>
+      </div>
+    </aside>
+
+    <button id="sidebar-toggle" class="sidebar-float-toggle" aria-label="Toggle Sidebar">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </button>
+
+    <div id="sidebar-overlay"></div>
+
+    <main id="content" class="content">
+<h1 id="article-title">关于本站</h1>
+
+<div class="article-meta">
+  <span>山东大学网络空间安全学院</span>
+  <span>2026-03-06 00:00:00</span>
+</div>
+
+<div id="article-content">
+  <h2 id="导语">导语</h2>
+<p>现在是凌晨两点，不知道自己在想什么，干脆起来更新一下网站主页。</p>
+<p>我在上学院的数学课的时候，总是会想，能不能用最通俗易懂的语言来把这门课讲清楚，能不能从其他的优秀教材中获得更好的理解，结合这两个方面，我制作了这个网站，不仅仅是为了实现自己的想法，也希望能帮助到其他同学。</p>
+<p>关于这个网站的发展历史，我放在了这个页面的最后，如果你愿意了解更多，欢迎阅读。</p>
+<h2 id="打开方式">打开方式</h2>
+<p>不同的课程在侧边栏中会有不同的编号：</p>
+<ul class="article-list article-list--ul">
+<li><p>必修课程对应的编号为 <code>AXX</code></p></li>
+<li><p>限选课程对应的编号为 <code>BXX</code></p></li>
+<li><p>针对必修的拓展内容为 <code>EXX</code></p></li>
+<li><p>与数学工具相关的内容为 <code>TXX</code></p></li>
+</ul>
+<p>点击侧边栏中的选项即可展开对应课程的子目录，点击右侧区域中的具体条目即可打开正文。</p>
+<h2 id="网站来由">网站来由</h2>
+<p>我在大一下学期的时候，学离散数学学得非常开心，就想能不能整理自己的离散笔记，看看能不能整理得清楚明白，并顺手开源到Github的仓库里，结果是非常成功，我有好多同学都来看我的笔记，并且在期末周的时候用我的笔记复习，我收获了很多好评和催更，这也成了我做这件事的一个小小转折点。</p>
+<p>然后我发现Github的Markdown语法和主流语法有些不太兼容，尤其是数学公式，我当时用的Markdown编辑器是Typora，当我把编辑好的Markdown格式复制到Github页面里面的时候，有些语法不得不重复修改，搞得我很恼火，干脆不用Github的页面了，自己做了一个博客来放这些笔记。</p>
+<p>但是这个博客仍然是基于Github的，而且使用了别人开发好的开源工具hexo，我使用了几个月下来发现并不好用，一是因为Github的服务器在国外，二是因为hexo的风格实在不合我的期望，所以我干脆从0开始，在AI辅助下做一整个框架，AI实现框架，我输出内容，很快得到了我满意的一版，就是大家现在看到的这一版。</p>
+<p>但是这还不够，我只允许AI做框架，我不允许AI来生成内容，AI的学习路径与人类不同，让AI生成讲解文档我觉得是一种不负责任的行为，所以都是我自己来写，但是想要通俗易懂地讲清楚真的太难了，往往花费了难以想象的时间只能得到很少的产出，但是我觉得这是值得的。</p>
+<p>以上是这个网站的历史，下面我来说点我自己想说的。</p>
+<p>我不是一个很有天赋的人，在过去五年的努力里，我知道自己已经来到了自己的上限，尤其是在我写这些文档的时候，我不知道该怎么形容这种感觉，有点穷途末路的无奈，但是我知道，屏幕前的各位还远没有到达自己的上限，还远没有意识到自己的潜力，而我愿意相信大家的能力。</p>
+<p>沉睡的狮子需要时间来觉醒，我去完成最后的一点铺垫。</p>
+</div>
+    </main>
+
+    <aside id="right-toc">
+      <div class="right-toc-inner">
+        <p class="right-toc-title">目录</p>
+        <nav id="right-toc-content">
+          <ul>
+            <li class="toc-level-1">
+              <a href="#导语">导语</a>
+            </li>
+            <li class="toc-level-1">
+              <a href="#打开方式">打开方式</a>
+            </li>
+            <li class="toc-level-1">
+              <a href="#网站来由">网站来由</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  </div>
+
+  <div id="footer">
+    <p>©2026-2026 <a href="/">山东大学网络空间安全学院</a></p>
+  </div>
+
+  <button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480" fill="none">
+  <rect width="760" height="480" rx="28" fill="#F8F4EC"/>
+  <rect x="18" y="18" width="724" height="444" rx="22" stroke="#D0C1A9" stroke-width="2"/>
+  <path d="M130 392H640" stroke="#2A3E52" stroke-width="4" stroke-linecap="round"/>
+  <path d="M180 428V92" stroke="#2A3E52" stroke-width="4" stroke-linecap="round"/>
+  <path d="M640 392L620 382V402L640 392Z" fill="#2A3E52"/>
+  <path d="M180 92L170 112H190L180 92Z" fill="#2A3E52"/>
+  <path d="M180 392L430 392" stroke="#3B77A0" stroke-width="6" stroke-linecap="round"/>
+  <path d="M430 392L414 384V400L430 392Z" fill="#3B77A0"/>
+  <path d="M180 392L180 188" stroke="#C98039" stroke-width="6" stroke-linecap="round"/>
+  <path d="M180 188L172 204H188L180 188Z" fill="#C98039"/>
+  <path d="M180 392L430 188" stroke="#2C8C6B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M430 188L411 193L421 206L430 188Z" fill="#2C8C6B"/>
+  <path d="M430 392L430 188" stroke="#7D8B97" stroke-width="3" stroke-dasharray="10 10"/>
+  <path d="M180 188L430 188" stroke="#7D8B97" stroke-width="3" stroke-dasharray="10 10"/>
+  <circle cx="180" cy="392" r="6" fill="#1F2937"/>
+  <circle cx="430" cy="188" r="6" fill="#1F2937"/>
+  <text x="648" y="399" fill="#1F2937" font-family="STIX Two Text, Georgia, serif" font-size="24">x</text>
+  <text x="188" y="102" fill="#1F2937" font-family="STIX Two Text, Georgia, serif" font-size="24">y</text>
+  <text x="296" y="380" fill="#3B77A0" font-family="STIX Two Text, Georgia, serif" font-size="28">x u₁</text>
+  <text x="194" y="286" fill="#C98039" font-family="STIX Two Text, Georgia, serif" font-size="28">y u₂</text>
+  <text x="314" y="262" fill="#2C8C6B" font-family="STIX Two Text, Georgia, serif" font-size="30">v</text>
+  <text x="438" y="180" fill="#1F2937" font-family="STIX Two Text, Georgia, serif" font-size="24">(x, y)</text>
+</svg>

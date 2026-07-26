@@ -1,0 +1,21 @@
+{% macro render_tree(nodes) -%}
+<ul>
+  {% for node in nodes %}
+  {% if node.children %}
+  <li class="directory">
+    <a href="{{ node.url or '#' }}" class="directory{% if not node.url %} directory-toggle-only{% endif %}">
+      <span class="tree-label">{{ node.title }}</span>
+      <span class="tree-expander" role="button" tabindex="0" aria-label="切换 {{ node.title }}" aria-expanded="false">
+        <i class="fa fa-angle-right tree-arrow" aria-hidden="true"></i>
+      </span>
+    </a>
+    {{ render_tree(node.children) }}
+  </li>
+  {% else %}
+  <li class="file">
+    <a href="{{ node.url }}">{{ node.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{%- endmacro %}

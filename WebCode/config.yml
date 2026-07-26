@@ -1,0 +1,19 @@
+site:
+  title: 网安数学站
+  subtitle: ""
+  description: 一个面向学院数学课程笔记整理与分享的静态站点。
+  author: 山东大学网络空间安全学院
+  language: zh-CN
+  base_url: /
+
+content:
+  source_root: ..
+  reserved_dirs:
+    - WebCode
+    - .git
+    - .github
+    - .agents
+    - .codex
+    - __pycache__
+    - node_modules
+  output_dir: ./dist

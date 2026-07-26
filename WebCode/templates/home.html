@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 id="article-title">{{ document.title }}</h1>
+
+<div class="article-meta">
+  <span>{{ document.author }}</span>
+  {% if document.date_display %}
+  <span>{{ document.date_display }}</span>
+  {% endif %}
+</div>
+
+<div id="article-content">
+  {{ document.html | safe }}
+</div>
+{% endblock %}

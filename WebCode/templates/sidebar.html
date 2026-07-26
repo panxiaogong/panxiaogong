@@ -1,0 +1,8 @@
+{% import "macros.html" as macros %}
+{% if navigation_tree %}
+{{ macros.render_tree(navigation_tree) }}
+{% else %}
+<ul>
+  <li class="file active"><a href="{{ site.base_url if site.base_url != '/' else '/' }}">暂无内容</a></li>
+</ul>
+{% endif %}
