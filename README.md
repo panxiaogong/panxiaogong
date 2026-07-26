@@ -18,10 +18,14 @@
 
 ## 📊 GitHub 统计
 
-<div align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=panxiaogong&show_icons=true&theme=radical" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=panxiaogong&layout=compact&theme=radical" />
-</div>
+<p align="center">
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img height="160" src="https://github-readme-stats.vercel.app/api?username=panxiaogong&show_icons=true&theme=radical" alt="GitHub Stats" />
+  </a>
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=panxiaogong&layout=compact&theme=radical" alt="Top Languages" />
+  </a>
+</p>
 
 ---
 
