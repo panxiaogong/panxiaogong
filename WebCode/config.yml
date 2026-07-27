@@ -1,8 +1,8 @@
 site:
-  title: 网安数学站
+  title: 潘小工的小屋
   subtitle: ""
-  description: 一个面向学院数学课程笔记整理与分享的静态站点。
-  author: 山东大学网络空间安全学院
+  description: 
+  author: 潘小工
   language: zh-CN
   base_url: /
 
