@@ -20,7 +20,7 @@
   --shadow-soft: 0 8px 18px rgba(32, 36, 43, 0.09);
   --font-latin-math: "MJXTEX", "Latin Modern Roman", "STIX Two Text", "Times New Roman", serif;
   --font-latin-math-italic: "MJXTEX-I-Scaled", "MJXTEX-I", "MJXTEX", "Latin Modern Roman", "STIX Two Text", "Times New Roman", serif;
-  --font-cn: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-cn: "Source Han Sans SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "SimHei", sans-serif;
 }
 
 @font-face {
@@ -65,8 +65,8 @@ body {
       linear-gradient(180deg, var(--bg-main) 0%, #edeae5 100%);
   color: var(--text-main);
   font-family: var(--font-cn);
-  line-height: 1.78;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  -webkit-font-smoothing: auto;
   text-rendering: optimizeLegibility;
 }
 
@@ -161,6 +161,7 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0.01em;
   font-size: 30px;
+  font-family: var(--font-cn);
 }
 
 #title i {
@@ -366,6 +367,7 @@ body:not(.sidebar-open) .sidebar-float-toggle i {
   font-size: 15px;
   line-height: 1.35;
   word-break: break-word;
+  font-family: var(--font-cn);
 }
 
 #tree li a:hover {
@@ -384,6 +386,7 @@ body:not(.sidebar-open) .sidebar-float-toggle i {
   gap: 12px;
   color: #2f3948;
   font-weight: 600;
+  font-family: var(--font-cn);
 }
 
 #tree li.file > a {
@@ -535,6 +538,7 @@ body:not(.sidebar-open) #content > * {
   font-size: 48px;
   line-height: 1.22;
   letter-spacing: 0.01em;
+  font-family: var(--font-cn);
 }
 
 #article-content {
@@ -545,9 +549,9 @@ body:not(.sidebar-open) #content > * {
   background: linear-gradient(180deg, var(--bg-surface-start) 0%, var(--bg-surface-end) 100%);
   box-shadow: var(--shadow-soft);
   font-family: var(--font-latin-math-italic), var(--font-cn);
-  font-size: 17px;
-  font-weight: 400;
-  font-synthesis: none;
+  font-size: 19px;
+  font-weight: 550;
+  font-synthesis: style weight;
 }
 
 #article-content p,
@@ -742,6 +746,7 @@ table th {
   color: var(--text-main);
   font-size: 19px;
   font-weight: 700;
+  font-family: var(--font-cn);
 }
 
 #right-toc-content ul {
@@ -762,6 +767,7 @@ table th {
   color: var(--text-soft);
   font-size: 14px;
   line-height: 1.4;
+  font-family: var(--font-cn);
 }
 
 #right-toc-content a:hover {
