@@ -20,7 +20,7 @@
   --shadow-soft: 0 8px 18px rgba(32, 36, 43, 0.09);
   --font-latin-math: "MJXTEX", "Latin Modern Roman", "STIX Two Text", "Times New Roman", serif;
   --font-latin-math-italic: "MJXTEX-I-Scaled", "MJXTEX-I", "MJXTEX", "Latin Modern Roman", "STIX Two Text", "Times New Roman", serif;
-  --font-cn: "Source Han Sans SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "SimHei", sans-serif;
+  --font-cn: , "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
 }
 
 @font-face {
