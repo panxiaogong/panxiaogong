@@ -1083,6 +1083,15 @@ body:not(.sidebar-open) #footer {
   font-size: 14px;
 }
 
+#article-content .latex-center {
+  text-align: center;
+}
+
+#article-content .latex-center figure img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 #article-content .latex-block {
   margin: 18px 0;
   padding: 12px 16px;
