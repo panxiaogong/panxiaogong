@@ -1256,12 +1256,20 @@ def render_site(config_path: Path, should_clean: bool = True) -> Path:
             ),
         )
 
-    posts.sort(key=lambda item: item.date_sort, reverse=True)
-    for index, post in enumerate(posts):
-        if index > 0:
-            post.next_post = posts[index - 1]
-        if index + 1 < len(posts):
-            post.previous_post = posts[index + 1]
+
+    # 按课程文件夹（collection）分组，使上一篇/下一篇链接仅在同一课程内跳转
+    collection_groups: dict[tuple[str, ...], list[Document]] = defaultdict(list)
+    for post in posts:
+        collection_groups[post.collection_path].append(post)
+
+    for group in collection_groups.values():
+        group.sort(key=lambda item: item.date_sort, reverse=True)
+        for index, post in enumerate(group):
+            if index > 0:
+                post.next_post = group[index - 1]
+            if index + 1 < len(group):
+                post.previous_post = group[index + 1]
+
 
     home_page = next(page for page in pages if page.is_home)
     other_pages = [page for page in pages if not page.is_home]
