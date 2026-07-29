@@ -189,6 +189,11 @@ function initSidebar() {
   var $body = $('body');
   var wasMobile = mobileMedia.matches;
 
+  // 侧边栏入场动画结束后，清除 animation 属性，避免 fill-mode 锁定 transform
+  $('#sidebar').on('animationend', function () {
+    $(this).css('animation', 'none');
+  });
+
   function setSidebarOpen(isOpen) {
     $body.toggleClass('sidebar-open', isOpen);
   }

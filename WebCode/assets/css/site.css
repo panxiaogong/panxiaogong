@@ -344,7 +344,7 @@ body.loading #article-content li {
 }
 
 #sidebar {
-  animation: sidebarSlideIn 0.5s cubic-bezier(0.22,0.61,0.36,1) both;
+  animation: sidebarSlideIn 0.5s cubic-bezier(0.22,0.61,0.36,1) backwards;
   animation-delay: 0.1s;
   will-change: transform, opacity;
 }
@@ -667,7 +667,6 @@ body.sidebar-open #sidebar { transform:translateX(0); }
   background:rgba(30,30,30,0.6);
   border-color:rgba(255,255,255,0.2);
 }
-body:not(.sidebar-open) .sidebar-float-toggle { left:20px; }
 body:not(.sidebar-open) .sidebar-float-toggle { left:8px; }
 .sidebar-float-toggle i { transition:transform 0.2s ease; }
 body:not(.sidebar-open) .sidebar-float-toggle i { transform:rotate(180deg); }
