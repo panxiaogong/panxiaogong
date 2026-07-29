@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <title>潘小工 | 潘小工的小屋</title>
   <meta name="description" content="山东大学密码科学与技术专业本科生，热爱数学的密码学生。" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=2" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=3" />
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script>
     var searchEngine = "https://www.google.com/search?q=";
@@ -40,7 +40,7 @@
   <script>
     window.__sidebarUrl = "/sidebar.html";
   </script>
-  <script defer src="/assets/js/site.js?v=2"></script>
+  <script defer src="/assets/js/site.js?v=3"></script>
 </head>
 <body class="sidebar-open">
   <header id="header">
@@ -49,6 +49,13 @@
         <i class="fa fa-book" aria-hidden="true"></i>
         <span>潘小工的小屋</span>
       </a>
+    </div>
+
+    <div class="header-center">
+      <div class="header-search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input id="header-search-input" type="search" placeholder="搜索课程笔记...">
+      </div>
     </div>
 
     <ul id="menu">
@@ -85,8 +92,12 @@
     <div id="sidebar-overlay"></div>
 
     <main id="content" class="content">
-<div id="article-content">
-  <div class="latex-center"><figure class="article-figure"><img src="https://github.com/panxiaogong.png" alt="panxiaogong" loading="lazy" style="width: min(100%, 20%);" /></figure>
+<div id="dashboard-home">
+  <!-- 首页正文 (液态玻璃卡片) -->
+  <div class="glass-card glass-main">
+    <div class="glass-card-body">
+      <div id="article-content">
+        <div class="latex-center"><figure class="article-figure"><img src="https://github.com/panxiaogong.png" alt="panxiaogong" loading="lazy" style="width: min(100%, 20%);" /></figure>
 <p>China/Qingdao <span class="latex-space latex-space--wide"></span> <a href="https://github.com/panxiaogong" target="_blank" rel="noreferrer">GitHub</a></p></div>
 <h2 id="关于笔者">关于笔者</h2>
 <p>你好，我是潘小工，是一个热爱数学的密码学生，来自山东大学网络空间安全学院，主修密码科学与技术，辅修金融数学。</p>
@@ -113,6 +124,71 @@
 <p>以上是这个网站的历史，下面我来说点我自己想说的。</p>
 <p>我不是一个很有天赋的人，在过去五年的努力里，我知道自己已经来到了自己的上限。尤其是在我写这些文档的时候，我不知道该怎么形容这种感觉——有点穷途末路的无奈。但是我知道，屏幕前的各位还远没有到达自己的上限，还远没有意识到自己的潜力，而我愿意相信大家的能力。</p>
 <p>沉睡的狮子需要时间来觉醒，我去完成最后的一点铺垫。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 最近文章 -->
+  <div class="glass-card">
+    <div class="glass-card-header">
+      <span class="glass-card-title">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 最近更新
+      </span>
+      <span class="glass-badge">6 篇</span>
+    </div>
+    <div class="glass-card-body">
+      <div class="article-list">
+        <a href="/A01-线性代数/01-向量与线性组合/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">向量与线性组合</div>
+            <div class="item-meta">2026-06-07</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="/A02-数学分析-上/00-课程说明/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">数学分析(上)课程说明</div>
+            <div class="item-meta">2026-07-21</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="/A03-数学分析-下/00-课程说明/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">数学分析(下)课程说明</div>
+            <div class="item-meta">2026-07-21</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="/A04-离散数学/00-课程说明/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">离散数学课程说明</div>
+            <div class="item-meta">2026-07-21</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="/A05-组合学与图论/00-课程说明/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">组合学与图论课程说明</div>
+            <div class="item-meta">2026-07-21</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="/A06-概率论与数理统计/00-课程说明/" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">概率论与数理统计课程说明</div>
+            <div class="item-meta">2026-07-21</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
     </main>
 

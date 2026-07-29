@@ -1,7 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="article-content">
-  {{ document.html | safe }}
+<div id="dashboard-home">
+  <!-- 首页正文 (液态玻璃卡片) -->
+  <div class="glass-card glass-main">
+    <div class="glass-card-body">
+      <div id="article-content">
+        {{ document.html | safe }}
+      </div>
+    </div>
+  </div>
+
+  <!-- 最近文章 -->
+  {% if recent_posts %}
+  <div class="glass-card">
+    <div class="glass-card-header">
+      <span class="glass-card-title">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 最近更新
+      </span>
+      <span class="glass-badge">{{ recent_posts|length }} 篇</span>
+    </div>
+    <div class="glass-card-body">
+      <div class="article-list">
+        {% for post in recent_posts %}
+        <a href="{{ post.url }}" class="article-list-item">
+          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+          <div class="item-info">
+            <div class="item-title">{{ post.title }}</div>
+            <div class="item-meta">{{ post.date_display or post.date_raw }}</div>
+          </div>
+          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

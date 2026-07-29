@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <title>{% if document.title %}{{ document.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ document.summary or site.description }}" />
-  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/site.css?v=2" />
+  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/site.css?v=3" />
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script>
     var searchEngine = "https://www.google.com/search?q=";
@@ -41,7 +41,7 @@
   <script>
     window.__sidebarUrl = "{{ site.base_url.rstrip('/') if site.base_url != '/' else '' }}/sidebar.html";
   </script>
-  <script defer src="{{ site.base_url if site.base_url != '/' else '' }}/assets/js/site.js?v=2"></script>
+  <script defer src="{{ site.base_url if site.base_url != '/' else '' }}/assets/js/site.js?v=3"></script>
 </head>
 <body class="sidebar-open">
   <header id="header">
@@ -50,6 +50,13 @@
         <i class="fa fa-book" aria-hidden="true"></i>
         <span>{{ site.title }}</span>
       </a>
+    </div>
+
+    <div class="header-center">
+      <div class="header-search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input id="header-search-input" type="search" placeholder="搜索课程笔记...">
+      </div>
     </div>
 
     <ul id="menu">
