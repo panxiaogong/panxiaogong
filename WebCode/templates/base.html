@@ -43,7 +43,41 @@
   </script>
   <script defer src="{{ site.base_url if site.base_url != '/' else '' }}/assets/js/site.js?v=3"></script>
 </head>
-<body class="sidebar-open">
+<body class="sidebar-open loading">
+  <!-- 科幻加载屏 -->
+  <div id="loader">
+    <div class="loader-bg"></div>
+    <div class="loader-content">
+      <div class="loader-rings">
+        <div class="loader-ring ring-1"></div>
+        <div class="loader-ring ring-2"></div>
+        <div class="loader-ring ring-3"></div>
+      </div>
+      <div class="loader-core">
+        <div class="loader-diamond"></div>
+      </div>
+      <div class="loader-text">
+        <span class="loader-text-main">系统初始化</span>
+        <span class="loader-dots">
+          <span>.</span><span>.</span><span>.</span>
+        </span>
+      </div>
+      <div class="loader-scanline"></div>
+      <div class="loader-progress">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var l=document.getElementById('loader');
+      if(!l)return;
+      var isHome=window.location.pathname==='/'||window.location.pathname==='/index.html'||window.location.pathname.endsWith('/index.html')&&window.location.pathname.split('/').length<=3;
+      if(!isHome){l.remove();document.body.classList.remove('loading');return;}
+      setTimeout(function(){l.classList.add('fade-out');setTimeout(function(){l.remove();document.body.classList.remove('loading');},500)},1000);
+    })();
+  </script>
+
   <header id="header">
     <div class="header-left">
       <a id="title" href="{{ site.base_url if site.base_url != '/' else '/' }}" class="logo">

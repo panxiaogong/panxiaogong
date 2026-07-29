@@ -3,9 +3,9 @@
   {% for node in nodes %}
   {% if node.children %}
   <li class="directory">
-    <a href="{{ node.url or '#' }}" class="directory{% if not node.url %} directory-toggle-only{% endif %}">
+    <a href="javascript:void(0)" class="directory">
       <span class="tree-label">{{ node.title }}</span>
-      <span class="tree-expander" role="button" tabindex="0" aria-label="切换 {{ node.title }}" aria-expanded="false">
+      <span class="tree-expander">
         <i class="fa fa-angle-right tree-arrow" aria-hidden="true"></i>
       </span>
     </a>

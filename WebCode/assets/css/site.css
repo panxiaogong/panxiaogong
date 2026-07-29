@@ -123,6 +123,219 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== 科幻加载屏 ===== */
+/* 加载期间暂停入场动画 */
+body.loading #header,
+body.loading #sidebar,
+body.loading .glass-card,
+body.loading #article-content,
+body.loading #right-toc,
+body.loading #tree li,
+body.loading #article-content p,
+body.loading #article-content h2,
+body.loading #article-content h3,
+body.loading #article-content li {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+/* 旋转光环 */
+.loader-rings {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 32px;
+}
+
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: ringSpin 1.5s linear infinite;
+}
+.ring-1 {
+  border-top-color: rgba(56,189,248,0.8);
+  border-right-color: rgba(56,189,248,0.3);
+  animation-duration: 1.2s;
+}
+.ring-2 {
+  inset: 10px;
+  border-bottom-color: rgba(129,140,248,0.6);
+  border-left-color: rgba(129,140,248,0.2);
+  animation-duration: 1.8s;
+  animation-direction: reverse;
+}
+.ring-3 {
+  inset: 22px;
+  border-top-color: rgba(56,189,248,0.4);
+  border-left-color: rgba(56,189,248,0.15);
+  animation-duration: 2.4s;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* 中心菱形 */
+.loader-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+}
+
+.loader-diamond {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  margin: 12px auto;
+  transform: rotate(45deg);
+  animation: diamondPulse 1s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(56,189,248,0.6), 0 0 40px rgba(56,189,248,0.3);
+}
+
+@keyframes diamondPulse {
+  0%, 100% { transform: rotate(45deg) scale(0.8); opacity: 0.6; }
+  50%      { transform: rotate(45deg) scale(1.4); opacity: 1; }
+}
+
+/* 加载文字 */
+.loader-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.loader-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  letter-spacing: 0.3em;
+  color: var(--text-secondary);
+}
+
+.loader-text-main {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loader-dots span {
+  display: inline-block;
+  animation: dotBounce 1.4s ease-in-out infinite;
+  color: var(--accent);
+}
+.loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+  40% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* 扫描线 */
+.loader-scanline {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(56,189,248,0.6) 20%,
+    rgba(56,189,248,1) 50%,
+    rgba(56,189,248,0.6) 80%,
+    transparent
+  );
+  animation: scanDown 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
+
+@keyframes scanDown {
+  0%   { top: -60px; opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: 120px; opacity: 0; }
+}
+
+/* 进度条 */
+.loader-progress {
+  width: 160px;
+  height: 2px;
+  margin: 24px auto 0;
+  background: rgba(255,255,255,0.08);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent-gradient);
+  border-radius: 1px;
+  animation: progressFill 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+  box-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
+
+@keyframes progressFill {
+  0%   { width: 0%; }
+  30%  { width: 35%; }
+  60%  { width: 70%; }
+  85%  { width: 92%; }
+  100% { width: 100%; }
+}
+
+/* 粒子背景 */
+.loader-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(56,189,248,0.3), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(129,140,248,0.2), transparent),
+    radial-gradient(1px 1px at 60% 20%, rgba(56,189,248,0.25), transparent),
+    radial-gradient(1px 1px at 80% 60%, rgba(129,140,248,0.15), transparent),
+    radial-gradient(1px 1px at 10% 80%, rgba(56,189,248,0.2), transparent),
+    radial-gradient(1px 1px at 70% 90%, rgba(56,189,248,0.18), transparent),
+    radial-gradient(1px 1px at 90% 40%, rgba(129,140,248,0.22), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(56,189,248,0.15), transparent);
+  background-size: 200px 200px;
+  animation: particlesDrift 8s linear infinite;
+}
+
+@keyframes particlesDrift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(10px, -15px); }
+  50%  { transform: translate(-5px, -5px); }
+  75%  { transform: translate(-10px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
 /* 各组件入场动画 */
 #header {
   animation: headerDescend 0.5s cubic-bezier(0.22,0.61,0.36,1) both;
