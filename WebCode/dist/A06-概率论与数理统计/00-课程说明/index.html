@@ -1,164 +1,155 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh" class="no-js">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <title>概率论与数理统计课程说明 | 潘小工的小屋</title>
-  <meta name="description" content="这里将逐步整理概率论与数理统计的课程笔记、公式梳理与题型归纳。" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=4" />
-  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d0d12">
+  <meta name="description" content="这里将逐步整理概率论与数理统计的课程笔记、公式梳理与题型归纳。">
+  <meta name="author" content="潘小工">
+  <title>概率论与数理统计课程说明 - 潘小工的小屋</title>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+  <link rel="stylesheet" href="/assets/css/palette.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/ziti.css">
   <script>
-    var searchEngine = "https://www.google.com/search?q=";
-    var homeHost = window.location.host;
+    window.__isHome = false;
+    window.__sidebarUrl = "/sidebar.html";
     window.MathJax = {
-      tex: {
-        packages: {'[+]': ['ams']},
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      },
-      startup: {
-        typeset: false
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+      tex: { packages: {'[+]': ['ams']}, inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+      startup: { typeset: false },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
     };
     window.__typesetMath = function () {
       if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') return;
-      var container = document.getElementById('content') || document.body;
-      window.MathJax.typesetPromise([container]).catch(function (err) {
-        console.error('MathJax typeset failed:', err);
-      });
+      var c = document.querySelector('.md-content__inner') || document.body;
+      window.MathJax.typesetPromise([c]).catch(function(e){ console.error(e); });
     };
-    document.addEventListener('DOMContentLoaded', function () {
-      window.__typesetMath();
-    });
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="window.__typesetMath()"></script>
-  <script>
-    window.__sidebarUrl = "/sidebar.html";
-  </script>
-  <script defer src="/assets/js/site.js?v=4"></script>
+  <script defer src="/assets/js/bundle.min.js"></script>
+  <script defer src="/assets/js/site.js?v=7"></script>
 </head>
-<body class="sidebar-open loading">
-  <!-- 科幻加载屏 -->
-  <div id="loader">
-    <div class="loader-bg"></div>
-    <div class="loader-content">
-      <div class="loader-rings">
-        <div class="loader-ring ring-1"></div>
-        <div class="loader-ring ring-2"></div>
-        <div class="loader-ring ring-3"></div>
-      </div>
-      <div class="loader-core">
-        <div class="loader-diamond"></div>
-      </div>
-      <div class="loader-text">
-        <span class="loader-text-main">系统初始化</span>
-        <span class="loader-dots">
-          <span>.</span><span>.</span><span>.</span>
-        </span>
-      </div>
-      <div class="loader-scanline"></div>
-      <div class="loader-progress">
-        <div class="loader-progress-bar"></div>
-      </div>
-    </div>
-  </div>
-  <script>
-    (function(){
-      var l=document.getElementById('loader');
-      if(!l)return;
-      var isHome=window.location.pathname==='/'||window.location.pathname==='/index.html'||window.location.pathname.endsWith('/index.html')&&window.location.pathname.split('/').length<=3;
-      if(!isHome){l.remove();document.body.classList.remove('loading');return;}
-      setTimeout(function(){l.classList.add('fade-out');setTimeout(function(){l.remove();document.body.classList.remove('loading');},500)},1000);
-    })();
-  </script>
+<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="blue" class="">
 
-  <header id="header">
-    <div class="header-left">
-      <a id="title" href="/" class="logo">
-        <i class="fa fa-book" aria-hidden="true"></i>
-        <span>潘小工的小屋</span>
+  <!-- Drawer toggle (hidden checkbox) -->
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+  <label class="md-overlay" for="__drawer"></label>
+
+  <!-- Header -->
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="页眉">
+      <label class="md-header__button md-icon" for="__drawer">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">潘小工的小屋</span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">概率论与数理统计课程说明</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://github.com/panxiaogong" title="GitHub" class="md-header__button md-icon" style="gap:4px;width:auto;padding:0 8px;font-size:.7rem;font-weight:500;">
+        <i class="fa fa-github"></i>
+        <span>GitHub</span>
       </a>
-    </div>
-
-    <div class="header-center">
-      <div class="header-search">
+      <label class="md-header__button md-icon" for="__search">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input id="header-search-input" type="search" placeholder="搜索课程笔记...">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+        <div class="md-search__inner">
+          <form class="md-search__form">
+            <input type="text" class="md-search__input" id="search-input-header" placeholder="搜索">
+          </form>
+        </div>
       </div>
-    </div>
-
-    <ul id="menu">
-      <li class="menu-item sidebar-mobile-toggle">
-        <button id="sidebar-toggle-mobile" class="icon-btn" aria-label="Toggle Sidebar">
-          <i class="fa fa-bars" aria-hidden="true"></i>
-        </button>
-      </li>
-    </ul>
+    </nav>
   </header>
 
-  <div id="app-shell">
-    <aside id="sidebar">
-      <div class="sidebar-head">
-        <button id="sidebar-close" class="icon-btn" aria-label="Close Sidebar">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </button>
-      </div>
+  <!-- Tabs -->
+  <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+    <div class="md-grid">
+      <ul class="md-tabs__list">
+        <li class="md-tabs__item">
+          <a href="/" class="md-tabs__link">主页</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="javascript:void(0)" class="md-tabs__link" id="tab-docs">文档</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="javascript:void(0)" class="md-tabs__link" id="tab-research">科研</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="javascript:void(0)" class="md-tabs__link" id="tab-chat">闲聊</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-      <div class="sidebar-search-wrap">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
-      </div>
+  <!-- Container -->
+  <div class="md-container" data-md-component="container">
+    <main class="md-main" data-md-component="main">
+      <div class="md-main__inner md-grid">
 
-      <div class="sidebar-tree-wrap">
-        <nav id="tree"></nav>
-      </div>
-    </aside>
+        <!-- Left sidebar -->
+        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav md-nav--primary" id="tree" aria-label="导航"></nav>
+            </div>
+          </div>
+        </div>
 
-    <button id="sidebar-toggle" class="sidebar-float-toggle" aria-label="Toggle Sidebar">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-    </button>
-
-    <div id="sidebar-overlay"></div>
-
-    <main id="content" class="content">
-<h1 id="article-title">概率论与数理统计课程说明</h1>
+        <!-- Content -->
+        <div class="md-content" data-md-component="content">
+          <article class="md-content__inner md-typeset">
+<h1>概率论与数理统计课程说明</h1>
 
 <div class="article-meta">
-  <span>潘小工</span>
-  <span>2026-07-21</span>
-</div>
+<span>潘小工</span><span>2026-07-21</span></div>
 
-<div id="article-content">
-  <h2 id="课程说明">课程说明</h2>
+<h2 id="课程说明">课程说明</h2>
 <p>这里将逐步整理概率论与数理统计的课程笔记、公式梳理、典型题型与复习总结。后续你可以继续在这个文件夹下按章节新增 LaTeX 文稿。</p>
-</div>
 
+          </article>
+        </div>
+
+        <!-- Right TOC -->
+        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav" aria-label="目录">
+                <p class="md-nav__title">目录</p>
+                <ul class="md-nav__list" id="right-toc-list">
+                  <li class="md-nav__item toc-level-2">
+                    <a href="#课程说明" class="md-nav__link">课程说明</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </main>
 
-    <aside id="right-toc">
-      <div class="right-toc-inner">
-        <p class="right-toc-title">目录</p>
-        <nav id="right-toc-content">
-          <ul>
-            <li class="toc-level-1">
-              <a href="#课程说明">课程说明</a>
-            </li>
-          </ul>
-        </nav>
+    <!-- Footer -->
+    <footer class="md-footer">
+      <div class="md-footer__inner md-grid">
+        <div class="md-footer-copyright">
+          &copy; 2025 &ndash; 2026 <a href="/">潘小工</a>
+        </div>
+        <div class="md-footer-icp">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026016426号</a>
+        </div>
       </div>
-    </aside>
+    </footer>
   </div>
 
-  <div id="footer">
-    <p>©2026-2026 <a href="/">潘小工</a></p>
-    <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026016426号</a></p>
-  </div>
-
-  <button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
 </body>
 </html>

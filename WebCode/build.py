@@ -1282,7 +1282,7 @@ def render_site(config_path: Path, should_clean: bool = True) -> Path:
     )
 
     sidebar_template = jinja.get_template("sidebar.html")
-    all_navigation_docs = [home_page, *other_pages, *posts]
+    all_navigation_docs = [*other_pages, *posts]
     shared_navigation_tree = build_navigation_tree(all_navigation_docs, "")
     sidebar_html = sidebar_template.render(
         site=site,

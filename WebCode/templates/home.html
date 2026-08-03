@@ -1,40 +1,75 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="dashboard-home">
-  <!-- 首页正文 (液态玻璃卡片) -->
-  <div class="glass-card glass-main">
-    <div class="glass-card-body">
-      <div id="article-content">
-        {{ document.html | safe }}
-      </div>
-    </div>
-  </div>
-
-  <!-- 最近文章 -->
-  {% if recent_posts %}
-  <div class="glass-card">
-    <div class="glass-card-header">
-      <span class="glass-card-title">
-        <i class="fa fa-clock-o" aria-hidden="true"></i> 最近更新
+<!-- Hero Section -->
+<div class="hero-section">
+  <div class="hero-text">
+    <div class="hero-title">Hi, I'm <span class="hero-name-box"><span class="name-text">{{ site.author }}</span></span></div>
+    <div class="hero-subtitle">
+      <span class="hero-subtitle-inner">
+        <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
       </span>
-      <span class="glass-badge">{{ recent_posts|length }} 篇</span>
     </div>
-    <div class="glass-card-body">
-      <div class="article-list">
-        {% for post in recent_posts %}
-        <a href="{{ post.url }}" class="article-list-item">
-          <div class="item-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
-          <div class="item-info">
-            <div class="item-title">{{ post.title }}</div>
-            <div class="item-meta">{{ post.date_display or post.date_raw }}</div>
-          </div>
-          <i class="fa fa-chevron-right item-arrow" aria-hidden="true"></i>
-        </a>
-        {% endfor %}
+    <div class="hero-bio">山东大学 · 密码科学与技术 · 数学与计算机的交叉路口</div>
+    <div class="hero-btns">
+      <a href="https://github.com/panxiaogong" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:{{ site.author }}@example.com" class="hero-btn hero-btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+  <div class="hero-avatar-wrap">
+    <div class="avatar-glow-container">
+      <div class="avatar-glow"></div>
+      <div class="avatar-img-wrap">
+        <img src="https://github.com/panxiaogong.png" alt="{{ site.author }}" loading="eager">
       </div>
     </div>
   </div>
-  {% endif %}
 </div>
+
+<!-- Greeting -->
+<div class="greeting-bar"><span id="greeting-text"></span></div>
+
+<!-- Course Cards -->
+{% if post_groups %}
+<div class="course-grid">
+  {% for group in post_groups %}
+  <a href="{{ group.posts[0].url }}" class="course-card">
+    <div class="course-card-icon">
+      {% if group.title.startswith('A') %}<i class="fa fa-bar-chart"></i>
+      {% elif group.title.startswith('T') %}<i class="fa fa-wrench"></i>
+      {% elif group.title.startswith('C') %}<i class="fa fa-code"></i>
+      {% else %}<i class="fa fa-book"></i>{% endif %}
+    </div>
+    <div class="course-card-title">{{ group.title }}</div>
+    <div class="course-card-count">{{ group.posts|length }} 篇笔记</div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- Main content (about) -->
+{{ document.html | safe }}
+
+<!-- Recent posts -->
+{% if recent_posts %}
+<nav class="md-nav recent-posts">
+  <p class="md-nav__title"><i class="fa fa-clock-o"></i> 最近更新</p>
+  <ul class="md-nav__list">
+    {% for post in recent_posts %}
+    <li class="md-nav__item">
+      <a href="{{ post.url }}" class="md-nav__link">
+        {{ post.title }}
+        <span class="meta">{{ post.date_display or post.date_raw }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
 {% endblock %}

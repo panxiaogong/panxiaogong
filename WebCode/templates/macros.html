@@ -1,19 +1,23 @@
-{% macro render_tree(nodes) -%}
-<ul>
+{% macro render_tree(nodes, parent_id='nav') -%}
+<ul class="md-nav__list">
   {% for node in nodes %}
   {% if node.children %}
-  <li class="directory">
-    <a href="javascript:void(0)" class="directory">
-      <span class="tree-label">{{ node.title }}</span>
-      <span class="tree-expander">
-        <i class="fa fa-angle-right tree-arrow" aria-hidden="true"></i>
-      </span>
-    </a>
-    {{ render_tree(node.children) }}
+  {% set section_id = parent_id ~ '_' ~ loop.index %}
+  <li class="md-nav__item md-nav__item--nested">
+    <input class="md-nav__toggle" id="__{{ section_id }}" type="checkbox" />
+    <label class="md-nav__link" for="__{{ section_id }}">
+      <span class="md-ellipsis">{{ node.title }}</span>
+      <span class="nav-chevron"><i class="fa fa-chevron-right"></i></span>
+    </label>
+    <nav class="md-nav">
+      {{ render_tree(node.children, section_id) }}
+    </nav>
   </li>
   {% else %}
-  <li class="file">
-    <a href="{{ node.url }}">{{ node.title }}</a>
+  <li class="md-nav__item">
+    <a href="{{ node.url }}" class="md-nav__link{% if node.active %} md-nav__link--active{% endif %}">
+      <span class="md-ellipsis">{{ node.title }}</span>
+    </a>
   </li>
   {% endif %}
   {% endfor %}
