@@ -1,10 +1,5 @@
-{% import "macros.html" as macros %}
-{% if navigation_tree and navigation_tree|length > 0 %}
-{{ macros.render_tree(navigation_tree) }}
-{% else %}
 <ul class="md-nav__list">
   <li class="md-nav__item">
     <span class="md-nav__link" style="color:var(--md-default-fg-color--lighter);cursor:default;">暂无内容，敬请期待</span>
   </li>
 </ul>
-{% endif %}

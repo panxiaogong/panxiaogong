@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d0d12">
+  <meta name="description" content="我在更新这个网站的时候，突然想到刚上大二的同学可能没有使用latex的经验，但是latex确确实实是近到实验报告远到读研都必须掌握的技能，甚至有学院老师直言会latex是一个较好的加分项，所以我决定写一篇latex教程，基本覆盖一些本科阶段的latex使用场景，帮助大家快速上手。 首先，latex是…">
+  <meta name="author" content="潘小工">
+  <title>latex配置与安装 - 潘小工的小屋</title>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+  <link rel="stylesheet" href="/assets/css/palette.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/ziti.css">
+  <script>
+    window.__isHome = false;
+    window.__sidebarUrl = "/sidebar.html";
+    window.MathJax = {
+      tex: { packages: {'[+]': ['ams']}, inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+      startup: { typeset: false },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+    window.__typesetMath = function () {
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') return;
+      var c = document.querySelector('.md-content__inner') || document.body;
+      window.MathJax.typesetPromise([c]).catch(function(e){ console.error(e); });
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="window.__typesetMath()"></script>
+  <script defer src="/assets/js/bundle.min.js"></script>
+  <script defer src="/assets/js/site.js?v=7"></script>
+</head>
+<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="blue" class="">
+
+  <!-- Drawer toggle (hidden checkbox) -->
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+  <label class="md-overlay" for="__drawer"></label>
+
+  <!-- Header -->
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="页眉">
+      <label class="md-header__button md-icon" for="__drawer">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">潘小工的小屋</span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">latex配置与安装</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://github.com/panxiaogong" title="GitHub" class="md-header__button md-icon" style="gap:4px;width:auto;padding:0 8px;font-size:.7rem;font-weight:500;">
+        <i class="fa fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <label class="md-header__button md-icon" for="__search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+        <div class="md-search__inner">
+          <form class="md-search__form">
+            <input type="text" class="md-search__input" id="search-input-header" placeholder="搜索">
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+    <div class="md-grid">
+      <ul class="md-tabs__list">
+        <li class="md-tabs__item">
+          <a href="/" class="md-tabs__link">主页</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="/about/" class="md-tabs__link" id="tab-docs">文档</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="#" class="md-tabs__link" id="tab-research">科研</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="/Dairy/2026-08/2026-08/" class="md-tabs__link" id="tab-chat">闲聊</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="md-container" data-md-component="container">
+    <main class="md-main" data-md-component="main">
+      <div class="md-main__inner md-grid">
+
+        <!-- Left sidebar -->
+        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav md-nav--primary" id="tree" aria-label="导航"></nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="md-content" data-md-component="content">
+          <article class="md-content__inner md-typeset">
+<h1>latex配置与安装</h1>
+<div class="article-meta">
+<span>潘宇琦</span></div>
+
+<p>我在更新这个网站的时候，突然想到刚上大二的同学可能没有使用latex的经验，但是latex确确实实是近到实验报告远到读研都必须掌握的技能，甚至有学院老师直言会latex是一个较好的加分项，所以我决定写一篇latex教程，基本覆盖一些本科阶段的latex使用场景，帮助大家快速上手。</p>
+<p>首先，latex是什么？</p>
+<p>与我们之前就耳熟能详的Word类似，latex也是一种文档排版系统，大家或多或少都使用过Word，Word界面有各种各样的按钮、图标，点击这些按钮就可以实现不同的功能，比如说文字的加粗或者调整行间距等等，但是latex并没有这些按钮，latex排版是通过一系列命令来对文字进行操作，听上去很困难，但是实际上latex的命令是非常容易上手的，而且你需要掌握的命令的数量非常非常少，掌握这些最基本的，就足够排版出相当规范的文档。我们前面提到过latex是读研必备的技能，是因为latex对于数学公式的排版效果要远超Word，这也是这个网站的源文件格式都采用.tex的原因。</p>
+<p>OK，那我们应该如何使用latex呢？</p>
+<p>使用方法有两类，一类是使用在线编辑器，直接在浏览器中搜索就可以找到很多，打开然后在线编辑就能得到你想要的，但是我个人并不推荐，在线编辑器的功能不是很全面，而且必须联网使用，我个人觉得使用体验一般，另一类是使用本地编辑器，安装在自己的电脑上，离线使用，我个人非常非常推荐这种方式。</p>
+<p>我把安装过程分为两部分，第一部分是texlive的安装，第二部分是TexStudio的安装，前者是latex的核心，后者是一个编辑器，我需要提醒的是，一定一定要先完成第一部分的安装，再进行第二部分的安装，请不要混乱顺序！！</p>
+<h2 id="安装texlive">安装texlive</h2>
+<p>首先我们要安装texlive，因为我们前面提到过latex是基于命令，也就是代码的排版系统，所以其运行需要latex环境，也就是这里的texlive，这里面包含了latex运行所需要的命令和包，也是为什么我们要先安装它。</p>
+<p>首先我们打开<a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noreferrer">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/</a>，这是清华大学的开源软件镜像站，我们找到texlive.iso，如下图所示，单击下载，下载速度依网速而定。</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/01.png" alt="下载镜像文件" loading="lazy" style="width: min(100%, 60%);" /><figcaption>下载镜像文件</figcaption></figure>
+<p>找到下载好的文件，双击它，可能会出现下面的弹窗，无需理会，点击打开</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/02.png" alt="系统安全警告" loading="lazy" style="width: min(100%, 30%);" /><figcaption>系统安全警告</figcaption></figure>
+<p>会得到下面的界面：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/03.png" alt="镜像文件内" loading="lazy" style="width: min(100%, 60%);" /><figcaption>镜像文件内</figcaption></figure>
+<p>点击install-tl-windows.bat，开始安装texlive，可能会出现下面的弹窗，无需理会，点击运行</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/04.png" alt="开始安装" loading="lazy" style="width: min(100%, 30%);" /><figcaption>开始安装</figcaption></figure>
+<p>然后你能看到安装程序，先不要点击安装，如下图所示：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/05.png" alt="安装程序" loading="lazy" style="width: min(100%, 30%);" /><figcaption>安装程序</figcaption></figure>
+<p>点击高级，如下图所示：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/06.png" alt="高级" loading="lazy" style="width: min(100%, 60%);" /><figcaption>高级</figcaption></figure>
+<p>你可以在这里修改安装位置，我把它修改成了下面的样子(因为我实在是不想把它装在C盘，仅供参考)，注意安装路径不能含有中文，否则安装到一半会失败，然后点击安装。</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/07.png" alt="个人修改" loading="lazy" style="width: min(100%, 60%);" /><figcaption>个人修改</figcaption></figure>
+<p>安装的界面如下图：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/08.png" alt="等待安装完成" loading="lazy" style="width: min(100%, 60%);" /><figcaption>等待安装完成</figcaption></figure>
+<p>安装所需要的时间因电脑而异，请耐心等待，你会等到这样的界面，这时候不要点击终止，要继续耐心等待。</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/09.png" alt="等待安装完成" loading="lazy" style="width: min(100%, 60%);" /><figcaption>等待安装完成</figcaption></figure>
+<p>等出现下面的界面时，就意味着安装完成了</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/10.png" alt="安装完成" loading="lazy" style="width: min(100%, 60%);" /><figcaption>安装完成</figcaption></figure>
+<p>可以摁住win键+R，输入cmd，打开命令行窗口，输入latex -v，如果出现了版本号，就说明安装成功了。</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/11.png" alt="检验安装是否成功" loading="lazy" style="width: min(100%, 60%);" /><figcaption>检验安装是否成功</figcaption></figure>
+<h2 id="安装TexStudio">安装TexStudio</h2>
+<p>texlive只是运行latex所必要的环境，并不能来编写代码，所以我们还需要一个编辑器，我个人非常推荐TexStudio，当然也可以使用vscode(需要安装相关插件)，只是我个人觉得TexStudio功能更全面，使用体验也更好(总不能什么事情都让vscode去办吧)</p>
+<p>首先我们打开TexStudio的官网<a href="https://texstudio.sourceforge.net/" target="_blank" rel="noreferrer">https://texstudio.sourceforge.net/</a>，下载你需要的版本：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/12.png" alt="TexStudio官网" loading="lazy" style="width: min(100%, 60%);" /><figcaption>TexStudio官网</figcaption></figure>
+<p>找到下载好的文件，双击它，安装过程非常简单，一直点击下一步即可(中间会让你选择安装位置，自己选择即可，我的选择如图)：</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/13.png" alt="安装界面" loading="lazy" style="width: min(100%, 60%);" /><figcaption>安装界面</figcaption></figure>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/14.png" alt="修改安装位置" loading="lazy" style="width: min(100%, 60%);" /><figcaption>修改安装位置</figcaption></figure>
+<p>等待结束，安装完成后点开TexStudio，在导航栏点击选项-设置TexStudio，找到命令，图中的四行只要不是空白就是正常的(如果你先安装了TexStudio而后安装了texlive，这里很有可能就是空白的，那就需要手动配置了)。</p>
+<figure class="article-figure"><img src="/content-assets/Docs/T01-Latex%E5%B0%8F%E5%B0%8F%E8%AF%B4%E6%98%8E%E4%B9%A6/figure/00/15.png" alt="修改安装位置" loading="lazy" style="width: min(100%, 100%);" /><figcaption>修改安装位置</figcaption></figure>
+
+<div class="post-guide">
+  <div class="item">
+    <a href="/Docs/T01-Latex小小说明书/03-latex高级教程/"><i class="fa fa-angle-left"></i> 03-latex高级教程</a>
+  </div>
+  <div class="item right">
+  </div>
+</div>
+          </article>
+        </div>
+
+        <!-- Right TOC -->
+        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav" aria-label="目录">
+                <p class="md-nav__title">目录</p>
+                <ul class="md-nav__list" id="right-toc-list">
+                  <li class="md-nav__item toc-level-2">
+                    <a href="#安装texlive" class="md-nav__link">安装texlive</a>
+                  </li>
+                  <li class="md-nav__item toc-level-2">
+                    <a href="#安装TexStudio" class="md-nav__link">安装TexStudio</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="md-footer">
+      <div class="md-footer__inner md-grid">
+        <div class="md-footer-copyright">
+          &copy; 2025 &ndash; 2026 <a href="/">潘小工</a>
+        </div>
+        <div class="md-footer-icp">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026016426号</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

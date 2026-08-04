@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ document.title }}</h1>
+{% if document.title %}<h1>{{ document.title }}</h1>{% endif %}
 
+{% if document.author or document.date_display or document.tags %}
 <div class="article-meta">
   {% if document.author %}<span>{{ document.author }}</span>{% endif %}
   {% if document.date_display %}<span>{{ document.date_display }}</span>{% endif %}
   {% if document.tags %}<span>{{ document.tags | join(' · ') }}</span>{% endif %}
 </div>
+{% endif %}
 
 {{ document.html | safe }}
 

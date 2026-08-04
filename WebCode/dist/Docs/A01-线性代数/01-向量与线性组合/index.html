@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d0d12">
+  <meta name="description" content="一个示例性的线性代数内容页，用来展示根目录内容文件夹的新组织方式，以及 LaTeX 到 HTML 的渲染效果。">
+  <meta name="author" content="潘小工">
+  <title>向量与线性组合 - 潘小工的小屋</title>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+  <link rel="stylesheet" href="/assets/css/palette.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/ziti.css">
+  <script>
+    window.__isHome = false;
+    window.__sidebarUrl = "/sidebar.html";
+    window.MathJax = {
+      tex: { packages: {'[+]': ['ams']}, inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+      startup: { typeset: false },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+    window.__typesetMath = function () {
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') return;
+      var c = document.querySelector('.md-content__inner') || document.body;
+      window.MathJax.typesetPromise([c]).catch(function(e){ console.error(e); });
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="window.__typesetMath()"></script>
+  <script defer src="/assets/js/bundle.min.js"></script>
+  <script defer src="/assets/js/site.js?v=7"></script>
+</head>
+<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="blue" class="">
+
+  <!-- Drawer toggle (hidden checkbox) -->
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+  <label class="md-overlay" for="__drawer"></label>
+
+  <!-- Header -->
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="页眉">
+      <label class="md-header__button md-icon" for="__drawer">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">潘小工的小屋</span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">向量与线性组合</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://github.com/panxiaogong" title="GitHub" class="md-header__button md-icon" style="gap:4px;width:auto;padding:0 8px;font-size:.7rem;font-weight:500;">
+        <i class="fa fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <label class="md-header__button md-icon" for="__search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+        <div class="md-search__inner">
+          <form class="md-search__form">
+            <input type="text" class="md-search__input" id="search-input-header" placeholder="搜索">
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+    <div class="md-grid">
+      <ul class="md-tabs__list">
+        <li class="md-tabs__item">
+          <a href="/" class="md-tabs__link">主页</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="/about/" class="md-tabs__link" id="tab-docs">文档</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="#" class="md-tabs__link" id="tab-research">科研</a>
+        </li>
+        <li class="md-tabs__item">
+          <a href="/Dairy/2026-08/2026-08/" class="md-tabs__link" id="tab-chat">闲聊</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="md-container" data-md-component="container">
+    <main class="md-main" data-md-component="main">
+      <div class="md-main__inner md-grid">
+
+        <!-- Left sidebar -->
+        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav md-nav--primary" id="tree" aria-label="导航"></nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="md-content" data-md-component="content">
+          <article class="md-content__inner md-typeset">
+<h1>向量与线性组合</h1>
+<div class="article-meta">
+<span>2026-06-07</span><span>线性代数 · 向量空间 · LaTeX</span></div>
+
+<h2 id="线性组合的基本想法">线性组合的基本想法</h2>
+<p>在线性代数里，我们经常希望用少量基础向量去描述更多的向量。最基本的形式就是线性组合：</p>
+<div class="math-block">\[
+\mathbf{v} = a_1\mathbf{u}_1 + a_2\mathbf{u}_2 + \cdots + a_n\mathbf{u}_n.
+\]</div>
+<p>这意味着，只要给定若干向量 <span class="math-inline">\(\mathbf{u}_1,\dots,\mathbf{u}_n\)</span>，以及一组标量 <span class="math-inline">\(a_1,\dots,a_n\)</span>，就可以得到新的向量 <span class="math-inline">\(\mathbf{v}\)</span>。</p>
+<h3 id="二维情形的直观理解">二维情形的直观理解</h3>
+<p>在二维平面里，若</p>
+<div class="math-block">\[
+\mathbf{u}_1 =
+\begin{pmatrix}
+1\\
+0
+\end{pmatrix},
+\qquad
+\mathbf{u}_2 =
+\begin{pmatrix}
+0\\
+1
+\end{pmatrix},
+\]</div>
+<p>那么任意向量</p>
+<div class="math-block">\[
+\mathbf{v} =
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+\]</div>
+<p>都可以写成</p>
+<div class="math-block">\[
+\mathbf{v} = x\mathbf{u}_1 + y\mathbf{u}_2.
+\]</div>
+<figure class="article-figure"><img src="/content-assets/Docs/A01-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/assets/linear-combination.svg" alt="二维平面中，向量 \(\mathbf{v}\) 可以看成基向量线性组合的结果。" loading="lazy" style="width: min(100%, 74%);" /><figcaption>二维平面中，向量 <span class="math-inline">\(\mathbf{v}\)</span> 可以看成基向量线性组合的结果。</figcaption></figure>
+<h3 id="张成与向量空间">张成与向量空间</h3>
+<section class="latex-block latex-block--definition"><div class="block-label">定义 1</div><div class="block-body"><p>给定向量组 <span class="math-inline">\(\mathbf{u}_1,\dots,\mathbf{u}_n\)</span>，所有形如</p>
+<div class="math-block">\[
+a_1\mathbf{u}_1 + \cdots + a_n\mathbf{u}_n
+\]</div>
+<p>的向量所构成的集合，称为这组向量的<strong>张成集</strong>。</p></div></section>
+<p>如果一组向量能够张成整个空间，我们就说它们足以描述这个空间中的所有向量。在线性代数课程里，这会进一步引出“基”“维数”“线性无关”等核心概念。</p>
+<h3 id="一个常见结论">一个常见结论</h3>
+<section class="latex-block latex-block--theorem"><div class="block-label">定理 1</div><div class="block-body"><p>在 <span class="math-inline">\(\mathbb{R}^2\)</span> 中，只要两个向量线性无关，它们就能够张成整个 <span class="math-inline">\(\mathbb{R}^2\)</span>。</p></div></section>
+<section class="latex-block latex-block--proof"><div class="block-label">证明</div><div class="block-body"><p>若两个向量线性无关，则它们不共线，因此它们确定了平面中的两个独立方向。任意平面向量都可以唯一地沿这两个方向分解，所以整个 <span class="math-inline">\(\mathbb{R}^2\)</span> 都能写成这两个向量的线性组合。</p></div></section>
+<h3 id="为什么这个示例有意义">为什么这个示例有意义</h3>
+<section class="latex-block latex-block--example"><div class="block-label">例 1</div><div class="block-body"><p>这个文件被直接放在仓库根目录下的 <code>A01-线性代数</code> 文件夹中，因此别人打开 GitHub 仓库首页后，能够立刻定位到“线性代数”这一专题，而不用先进入统一的内容总目录。</p></div></section>
+<p>这正是这次结构调整的主要目标：让内容文件夹本身就成为仓库首页最直观的导航入口。</p>
+
+          </article>
+        </div>
+
+        <!-- Right TOC -->
+        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+              <nav class="md-nav" aria-label="目录">
+                <p class="md-nav__title">目录</p>
+                <ul class="md-nav__list" id="right-toc-list">
+                  <li class="md-nav__item toc-level-2">
+                    <a href="#线性组合的基本想法" class="md-nav__link">线性组合的基本想法</a>
+                  </li>
+                  <li class="md-nav__item toc-level-3">
+                    <a href="#二维情形的直观理解" class="md-nav__link">二维情形的直观理解</a>
+                  </li>
+                  <li class="md-nav__item toc-level-3">
+                    <a href="#张成与向量空间" class="md-nav__link">张成与向量空间</a>
+                  </li>
+                  <li class="md-nav__item toc-level-3">
+                    <a href="#一个常见结论" class="md-nav__link">一个常见结论</a>
+                  </li>
+                  <li class="md-nav__item toc-level-3">
+                    <a href="#为什么这个示例有意义" class="md-nav__link">为什么这个示例有意义</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="md-footer">
+      <div class="md-footer__inner md-grid">
+        <div class="md-footer-copyright">
+          &copy; 2025 &ndash; 2026 <a href="/">潘小工</a>
+        </div>
+        <div class="md-footer-icp">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026016426号</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -306,7 +306,7 @@ def pull_command_metadata(text: str, metadata: dict[str, str]) -> tuple[str, dic
             if not result:
                 break
             value, start, end = result
-            if not metadata.get(key):
+            if key not in metadata:
                 metadata[key] = value.strip()
             working = working[:start] + working[end:]
             search_index = start
@@ -1002,10 +1002,19 @@ def build_document(
 
     html_body, toc = converter.convert(body, source_path)
     fallback_date = datetime.fromtimestamp(source_path.stat().st_mtime)
-    date_raw, date_display, date_sort = parse_date_value(metadata.get("date"), fallback_date)
+    # Only use date if explicitly set in metadata
+    if "date" in metadata:
+        date_raw, date_display, date_sort = parse_date_value(metadata["date"], fallback_date)
+    else:
+        date_raw = date_display = ""
+        date_sort = fallback_date
 
-    title = metadata.get("title") or (toc[0].text if toc else prettify_slug_piece(source_path.stem))
-    nav_title = metadata.get("nav_title") or title
+    if "title" in metadata:
+        title = metadata["title"].strip()
+    else:
+        title = toc[0].text if toc else prettify_slug_piece(source_path.stem)
+    # Sidebar nav title: use % nav_title: if set, otherwise use filename
+    nav_title = metadata.get("nav_title") or prettify_slug_piece(source_path.stem)
 
     relative = source_path.relative_to(source_root)
     if kind == "home":
@@ -1027,7 +1036,7 @@ def build_document(
     url = build_page_url(base_url, slug)
 
     summary = metadata.get("summary") or summarize_html(html_body)
-    author = metadata.get("author") or site_config["site"]["author"]
+    author = metadata.get("author", "").strip()
     tags = parse_tag_list(metadata.get("tags"))
 
     collection_path = () if is_home else relative.parent.parts
@@ -1161,7 +1170,8 @@ def build_page_links(pages: list[Document], active_slug: str) -> list[dict[str, 
 def build_post_groups(posts: list[Document]) -> list[dict[str, Any]]:
     groups: defaultdict[str, list[Document]] = defaultdict(list)
     for post in posts:
-        key = prettify_slug_piece(post.collection_path[0]) if post.collection_path else "未分类"
+        # Use the deepest collection directory (course name) as group key
+        key = prettify_slug_piece(post.collection_path[-1]) if post.collection_path else "未分类"
         groups[key].append(post)
 
     grouped: list[dict[str, Any]] = []
@@ -1245,7 +1255,7 @@ def render_site(config_path: Path, should_clean: bool = True) -> Path:
                 slug="",
                 url=build_page_url(site["base_url"], ""),
                 output_path=output_dir / "index.html",
-                html="<p>欢迎来到新的 LaTeX 数学站点。你可以在仓库根目录下任意内容文件夹里的 <code>home.tex</code> 中自定义首页内容。</p>",
+                html="",
                 summary=site["description"],
                 author=site["author"],
                 date_raw="",
@@ -1282,18 +1292,54 @@ def render_site(config_path: Path, should_clean: bool = True) -> Path:
     )
 
     sidebar_template = jinja.get_template("sidebar.html")
+
+    # Full sidebar (all content)
     all_navigation_docs = [*other_pages, *posts]
     shared_navigation_tree = build_navigation_tree(all_navigation_docs, "")
-    sidebar_html = sidebar_template.render(
-        site=site,
-        navigation_tree=shared_navigation_tree,
-    )
+    sidebar_html = sidebar_template.render(site=site, navigation_tree=shared_navigation_tree)
     write_text_if_changed(output_dir / "sidebar.html", sidebar_html)
+
+    # Map section names to content root names
+    section_map = {"docs": "Docs", "research": "Research", "dairy": "Dairy"}
+
+    # Per-section sidebars
+    for section_key, root_name in section_map.items():
+        section_posts = [p for p in posts if p.collection_path and p.collection_path[0].lower() == root_name.lower()]
+        # Strip the root folder from collection_path
+        stripped_posts = []
+        for p in section_posts:
+            import copy
+            pc = copy.copy(p)
+            pc.collection_path = p.collection_path[1:]
+            stripped_posts.append(pc)
+        # Docs: tree structure. Research/Dairy: flat list.
+        if section_key == "docs":
+            section_docs = [*other_pages, *stripped_posts]
+            section_tree = build_navigation_tree(section_docs, "")
+        else:
+            # Flat list: each post as a leaf node
+            flat = sorted(stripped_posts, key=lambda p: p.nav_title.lower())
+            section_tree = [{"title": p.nav_title, "url": p.url, "active": False, "children": []} for p in flat]
+        section_sidebar = sidebar_template.render(site=site, navigation_tree=section_tree)
+        write_text_if_changed(output_dir / f"sidebar-{section_key}.html", section_sidebar)
 
     last_updated = max(
         [home_page.date_sort, *(page.date_sort for page in other_pages), *(post.date_sort for post in posts)],
         default=datetime.now(),
     )
+
+    # Map section (content root) names to their first post URL
+    section_urls = {}
+    # Docs section: point to the about page (root-level page)
+    about_page = next((p for p in other_pages if p.slug == "about"), None)
+    section_urls["docs"] = about_page.url if about_page else (section_posts[0].url if section_posts else "#")
+    for section_key, root_name in [("research", "Research"), ("dairy", "Dairy")]:
+        root_posts = [p for p in posts if p.collection_path and p.collection_path[0].lower() == root_name.lower()]
+        root_posts.sort(key=lambda p: (p.collection_path + (p.nav_title.lower(),)))
+        if root_posts:
+            section_urls[section_key] = root_posts[0].url
+    section_urls.setdefault("research", "#")
+    section_urls.setdefault("dairy", "#")
 
     base_context = {
         "site": site,
@@ -1303,6 +1349,7 @@ def render_site(config_path: Path, should_clean: bool = True) -> Path:
         "page_count": len(other_pages),
         "recent_posts": posts[:6],
         "post_groups": build_post_groups(posts),
+        "section_urls": section_urls,
         "content_root_label": "仓库根目录下与 WebCode 同级的内容文件夹",
     }
 

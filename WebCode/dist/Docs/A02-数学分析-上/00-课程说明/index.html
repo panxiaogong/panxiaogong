@@ -1,21 +1,20 @@
-{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="zh" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0d0d12">
-  <meta name="description" content="{{ document.summary or site.description }}">
-  <meta name="author" content="{{ site.author }}">
-  <title>{% if document.title and not document.is_home %}{{ document.title }} - {% endif %}{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/main.min.css">
-  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/palette.min.css">
-  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/custom.css">
+  <meta name="description" content="这里将逐步整理数学分析(上)的课程笔记、例题整理与阶段复习内容。">
+  <meta name="author" content="潘小工">
+  <title>数学分析(上)课程说明 - 潘小工的小屋</title>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+  <link rel="stylesheet" href="/assets/css/palette.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ site.base_url if site.base_url != '/' else '' }}/assets/css/ziti.css">
+  <link rel="stylesheet" href="/assets/css/ziti.css">
   <script>
-    window.__isHome = {{ 'true' if document.is_home else 'false' }};
-    window.__sidebarUrl = "{{ site.base_url.rstrip('/') if site.base_url != '/' else '' }}/sidebar.html";
+    window.__isHome = false;
+    window.__sidebarUrl = "/sidebar.html";
     window.MathJax = {
       tex: { packages: {'[+]': ['ams']}, inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
       startup: { typeset: false },
@@ -29,10 +28,10 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="window.__typesetMath()"></script>
-  <script defer src="{{ site.base_url if site.base_url != '/' else '' }}/assets/js/bundle.min.js"></script>
-  <script defer src="{{ site.base_url if site.base_url != '/' else '' }}/assets/js/site.js?v=7"></script>
+  <script defer src="/assets/js/bundle.min.js"></script>
+  <script defer src="/assets/js/site.js?v=7"></script>
 </head>
-<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="blue" class="{% if document.is_home %}home-page{% endif %}">
+<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="blue" class="">
 
   <!-- Drawer toggle (hidden checkbox) -->
   <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -48,10 +47,10 @@
       <div class="md-header__title" data-md-component="header-title">
         <div class="md-header__ellipsis">
           <div class="md-header__topic">
-            <span class="md-ellipsis">{{ site.title }}</span>
+            <span class="md-ellipsis">潘小工的小屋</span>
           </div>
           <div class="md-header__topic" data-md-component="header-topic">
-            <span class="md-ellipsis">{% if document.title %}{{ document.title }}{% else %}首页{% endif %}</span>
+            <span class="md-ellipsis">数学分析(上)课程说明</span>
           </div>
         </div>
       </div>
@@ -76,17 +75,17 @@
   <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
     <div class="md-grid">
       <ul class="md-tabs__list">
-        <li class="md-tabs__item{% if document.is_home %} md-tabs__item--active{% endif %}">
-          <a href="{{ site.base_url if site.base_url != '/' else '/' }}" class="md-tabs__link">主页</a>
+        <li class="md-tabs__item">
+          <a href="/" class="md-tabs__link">主页</a>
         </li>
         <li class="md-tabs__item">
-          <a href="{{ section_urls.get('docs', '#') }}" class="md-tabs__link" id="tab-docs">文档</a>
+          <a href="/about/" class="md-tabs__link" id="tab-docs">文档</a>
         </li>
         <li class="md-tabs__item">
-          <a href="{{ section_urls.get('research', '#') }}" class="md-tabs__link" id="tab-research">科研</a>
+          <a href="#" class="md-tabs__link" id="tab-research">科研</a>
         </li>
         <li class="md-tabs__item">
-          <a href="{{ section_urls.get('dairy', '#') }}" class="md-tabs__link" id="tab-chat">闲聊</a>
+          <a href="/Dairy/2026-08/2026-08/" class="md-tabs__link" id="tab-chat">闲聊</a>
         </li>
       </ul>
     </div>
@@ -98,7 +97,7 @@
       <div class="md-main__inner md-grid">
 
         <!-- Left sidebar -->
-        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {% if document.is_home %}style="display:none"{% endif %}>
+        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
           <div class="md-sidebar__scrollwrap">
             <div class="md-sidebar__inner">
               <nav class="md-nav md-nav--primary" id="tree" aria-label="导航"></nav>
@@ -109,24 +108,24 @@
         <!-- Content -->
         <div class="md-content" data-md-component="content">
           <article class="md-content__inner md-typeset">
-            {% block content %}{% endblock %}
+<h1>数学分析(上)课程说明</h1>
+
+<h2 id="课程说明">课程说明</h2>
+<p>这里将逐步整理数学分析（上）的课程笔记、例题思路、证明框架与复习小结。后续你可以继续在这个文件夹下按章节新增 LaTeX 文稿。</p>
+
           </article>
         </div>
 
         <!-- Right TOC -->
-        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {% if document.is_home %}style="display:none"{% endif %}>
+        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
           <div class="md-sidebar__scrollwrap">
             <div class="md-sidebar__inner">
               <nav class="md-nav" aria-label="目录">
                 <p class="md-nav__title">目录</p>
                 <ul class="md-nav__list" id="right-toc-list">
-                  {% if toc %}
-                  {% for heading in toc %}
-                  <li class="md-nav__item toc-level-{{ heading.level }}">
-                    <a href="#{{ heading.anchor }}" class="md-nav__link">{{ heading.text }}</a>
+                  <li class="md-nav__item toc-level-2">
+                    <a href="#课程说明" class="md-nav__link">课程说明</a>
                   </li>
-                  {% endfor %}
-                  {% endif %}
                 </ul>
               </nav>
             </div>
@@ -140,7 +139,7 @@
     <footer class="md-footer">
       <div class="md-footer__inner md-grid">
         <div class="md-footer-copyright">
-          &copy; 2025 &ndash; {{ last_updated[:4] }} <a href="{{ site.base_url if site.base_url != '/' else '/' }}">{{ site.author }}</a>
+          &copy; 2025 &ndash; 2026 <a href="/">潘小工</a>
         </div>
         <div class="md-footer-icp">
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026016426号</a>
