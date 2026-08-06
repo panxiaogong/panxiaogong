@@ -1,0 +1,12 @@
+# 所有文本文件统一使用 LF 换行
+* text=auto eol=lf
+
+# 二进制文件（不进行换行转换）
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
